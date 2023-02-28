@@ -13,9 +13,6 @@ library(tidyverse)
 library(lubridate)
 library(scales)
 
-data <- read.csv("Friday-WorkingHours-Afternoon-DDos.pcap_ISCX.csv")
-View(data)
-
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   

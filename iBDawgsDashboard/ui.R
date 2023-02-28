@@ -40,25 +40,41 @@ dashboardPage( skin = "blue",
                   }
                 '))),
                  sidebarMenu(
-                   menuItem("Home", 
+                   menuItem("Introduction", 
                             tabName = "introduction", 
-                            icon = icon("home")),
-                   
-                   menuItem("Dataset Overview",
-                            tabName = "table",
-                            icon = icon("table")
+                            icon = icon("home")
                    ),
-                   menuItem("Feature Visualization",
-                            tabName = "category",
-                            icon = icon("chart-simple")
+                   menuItem("Importance",
+                            tabName = "importance",
+                            icon = icon("")
+                   ),
+                   menuItem("Attack Types",
+                            tabName = "types",
+                            icon = icon("")
+                   ),
+                   menuItem("Network Traffic",
+                            tabName = "data",
+                            icon = icon("")
+                   ),
+                   menuItem("Feature Selection",
+                            tabName = "feature",
+                            icon = icon("")
                    ),
                    menuItem("ML Model",
-                            tabName = "month",
-                            icon = icon("python")
+                            tabName = "model",
+                            icon = icon("")
                    ),
-                   menuItem("Metric Comparison",
-                            tabName = "range",
-                            icon = icon("clock")
+                   menuItem("Comparison",
+                            tabName = "comparison",
+                            icon = icon("")
+                   ),
+                   menuItem("Analysis Resulsts",
+                            tabName = "results",
+                            icon = icon("")
+                   ),
+                   menuItem("Business Values",
+                            tabName = "business",
+                            icon = icon("")
                    )
                 )
                ),
@@ -174,57 +190,76 @@ dashboardPage( skin = "blue",
                                )
                              )
                            )),
-                   tabItem("table",
+                   tabItem("importance",
                            fluidPage(
                              fluidRow(
-                               box(width = 12
-                               )
+                               box(width = 12)
                              ),
                              fluidRow(
                                box(width = 12)
                              )
                            )),
-                   tabItem("category",
+                   tabItem("types",
                            fluidPage(
                              fluidRow(
-                               box(width = 12
-                               )
+                               box(width = 12)
                              ),
                              fluidRow(
-                               box(
-                               ),
-                               box(
-                               )
-                             ),
-                             fluidRow(
-                               box(
-                               ), 
-                               box(
-                               )
+                               box(width = 12)
                              )
                            )),
-                   tabItem("month",
+                   tabItem("data",
                            fluidPage(
                              fluidRow(
-                               box(width = 12
-                               )
+                               box(width = 12)
                              ),
                              fluidRow(
-                               box(
-                               ),
-                               box(
-                               )
+                               box(width = 12)
                              )
                            )),
-                   tabItem("range",
+                   tabItem("feature",
                            fluidPage(
                              fluidRow(
-                               box(width = 12
-                               )
+                               box(width = 12)
                              ),
                              fluidRow(
-                               box(width = 12
-                               )
+                               box(width = 12)
+                             )
+                           )),
+                   tabItem("model",
+                           fluidPage(
+                             fluidRow(
+                               box(width = 12)
+                             ),
+                             fluidRow(
+                               box(width = 12)
+                             )
+                           )),
+                   tabItem("comparison",
+                           fluidPage(
+                             fluidRow(
+                               box(width = 12)
+                             ),
+                             fluidRow(
+                               box(width = 12)
+                             )
+                           )),
+                   tabItem("results",
+                           fluidPage(
+                             fluidRow(
+                               box(width = 12)
+                             ),
+                             fluidRow(
+                               box(width = 12)
+                             )
+                           )),
+                   tabItem("business",
+                           fluidPage(
+                             fluidRow(
+                               box(width = 12)
+                             ),
+                             fluidRow(
+                               box(width = 12)
                              )
                            ))
                  )
