@@ -18,6 +18,10 @@ library(leaflet)
 top_20 <- read.csv("top-20.csv")
 geo_data <- read.csv("geo_data.csv")
 
+region_counts <- geo_data %>%
+  group_by(Country, City, Region, Latitude, Longitude) %>%
+  summarize(count = n())
+
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
   # top 20 features
@@ -41,62 +45,46 @@ shinyServer(function(input, output) {
       theme(legend.position="none")
   })
   
-  geo_data_map <- reactive({
-    region_counts <- geo_data %>%
-      group_by(Country, City, Region, Latitude, Longitude) %>%
-      summarize(count = n())
-    
-    leaflet(region_counts) %>%
-      addTiles() %>%
-      addCircleMarkers(
-        ~Longitude, ~Latitude,
-        radius = ~sqrt(count) * 3,
-        popup = ~paste(City, ", ", Region, ", ", Country, ": ", "<br>", "The total number of IP addresses in this area: ", count),
-        color = "green",
-        fillOpacity = 0.3,
-        stroke = TRUE,
-        options = markerOptions(riseOnHover = TRUE)
-      )
-  })
-  
-  ddos_type_plot <- reactive({data <- data.frame(category = c("DDoS", "DoS Hulk", "DoS Slowhttptest", "DoS GoldenEye", "DoS slowloris"), 
+  ddos_type_plot <- reactive({
+    data <- data.frame(category = c("DDoS", "DoS Hulk", "DoS Slowhttptest", "DoS GoldenEye", "DoS slowloris"), 
                                                value = c(59.80, 35.18, 2.57, 1.57, 0.89))
   
-  # Sort the data frame by the value column in descending order
-  #data <- data[order(data$value, decreasing = TRUE), ]
+    # Sort the data frame by the value column in descending order
+    #data <- data[order(data$value, decreasing = TRUE), ]
+    
+    # Define color palette
+    colors <- c("#00BFFF", "#1E90FF", "#4169E1", "#000080", "#00008B")
+    
+    # Create the bar chart with different colors, descending order, x-axis limit, legend title, and bar labels
+    ggplot(data, aes(x = value, y = category, fill = category)) +
+      geom_bar(stat = "identity") +
+      geom_text(aes(label = value), hjust = 0.5) +
+      scale_fill_manual(values = colors) +
+      labs(title = "Distribution of Attack Types", x = "Percentage of Attacks", y = "Attack Type", fill = "Attack Type") +
+      theme_minimal() +
+      xlim(0, 100) +
+      coord_flip()
+  })
   
-  # Define color palette
-  colors <- c("#00BFFF", "#1E90FF", "#4169E1", "#000080", "#00008B")
-  
-  # Create the bar chart with different colors, descending order, x-axis limit, legend title, and bar labels
-  ggplot(data, aes(x = value, y = category, fill = category)) +
-    geom_bar(stat = "identity") +
-    geom_text(aes(label = value), hjust = 0.5) +
-    scale_fill_manual(values = colors) +
-    labs(title = "Distribution of Attack Types", x = "Percentage of Attacks", y = "Attack Type", fill = "Attack Type") +
-    theme_minimal() +
-    xlim(0, 100) +
-    coord_flip()
-    })
-  
-  ddos_type_pie <- reactive({data <- data.frame(category = c("DDoS", "DoS Hulk", "DoS Slowhttptest", "DoS GoldenEye", "DoS slowloris"), 
+  ddos_type_pie <- reactive({
+    data <- data.frame(category = c("DDoS", "DoS Hulk", "DoS Slowhttptest", "DoS GoldenEye", "DoS slowloris"), 
                                                 value = c(59.80, 35.18, 2.57, 1.57, 0.89))
   
-  # Sort the data frame by the value column in descending order
-  data <- data[order(data$value, decreasing = TRUE), ]
-  
-  # Define color palette
-  colors <- c("#00BFFF", "#1E90FF", "#4169E1", "#000080", "#00008B")
-  
-  # Create the pie chart with different colors and legend title
-  ggplot(data, aes(x = "", y = value, fill = category)) +
-    geom_col(width = 1) +
-    scale_fill_manual(values = colors, 
-                      name = "Attack Type", 
-                      labels = paste0(data$category, " (", data$value, "%)")) +
-    labs(title = "Distribution of Attack Types") +
-    coord_polar(theta = "y") +
-    theme_void()
+    # Sort the data frame by the value column in descending order
+    data <- data[order(data$value, decreasing = TRUE), ]
+    
+    # Define color palette
+    colors <- c("#00BFFF", "#1E90FF", "#4169E1", "#000080", "#00008B")
+    
+    # Create the pie chart with different colors and legend title
+    ggplot(data, aes(x = "", y = value, fill = category)) +
+      geom_col(width = 1) +
+      scale_fill_manual(values = colors, 
+                        name = "Attack Type", 
+                        labels = paste0(data$category, " (", data$value, "%)")) +
+      labs(title = "Distribution of Attack Types") +
+      coord_polar(theta = "y") +
+      theme_void()
   })
   
   model_score <- reactive({
@@ -177,7 +165,17 @@ shinyServer(function(input, output) {
   )
   
   output$benignMap <- renderLeaflet(
-    geo_data_map()
+    leaflet(region_counts) %>%
+      addTiles() %>%
+      addCircleMarkers(
+        ~Longitude, ~Latitude,
+        radius = ~sqrt(count) * 3,
+        popup = ~paste(City, ", ", Region, ", ", Country, ": ", "<br>", "The total number of IP addresses in this area: ", count),
+        color = "green",
+        fillOpacity = 0.3,
+        stroke = TRUE,
+        options = markerOptions(riseOnHover = TRUE)
+      )
   )
   
   output$ddosChart <- renderPlotly(
