@@ -199,7 +199,7 @@ dashboardPage( skin = "blue",
                              fluidRow(
                                box(width = 12,
                                  h2("Our Team"),
-                                 p("iBDawgs a team of skilled software developers and cybersecurity analysts dedicated to making the digital world a safer place. 
+                                 p("iBDawgs is a team of skilled software developers and cybersecurity analysts dedicated to making the digital world a safer place. 
                                    At iBDawgs, we understand the critical importance of cybersecurity in today's digital landscape. Malicious cyber attacks can have 
                                    devastating consequences for both individuals and organizations, and we are committed to developing innovative solutions that can 
                                    help prevent these attacks from happening. With a focus on machine learning, iBDawgs is working to develop a powerful machine 
@@ -267,7 +267,7 @@ dashboardPage( skin = "blue",
                                  p("")
                                )),
                              fluidRow(
-                               box(width = 6,
+                               box(width = 12,
                                    h3("DDoS"),
                                    p("Distributed Denial of Service is an attack in which multiple systems flood a targeted server or network with traffic, overwhelming it and causing it to stop responding to 
                                      legitimate requests."),
@@ -289,6 +289,16 @@ dashboardPage( skin = "blue",
                                      it sends more incomplete requests, gradually tying up the server resources."),
                                    br()
                                )
+                             ),
+                             fluidRow(
+                               box(width = 12,
+                                   plotlyOutput("ddosChart")
+                               )
+                             ),
+                             fluidRow(
+                               box(width = 12,
+                                   plotlyOutput("ddosPie")
+                               )
                              )
                            )),
                    tabItem("data",
@@ -299,41 +309,6 @@ dashboardPage( skin = "blue",
                                  h2("Network Traffic Data"),
                                  p("")
                                )),
-                             fluidRow(
-                               box(width = 12,
-                                   h3("Features"),
-                                   br(),
-                                   h5("Destination Port"),
-                                   p("The destination port number of the network traffic is important for identifying the type of application or service that is being used, which can help in identifying potential security threats."),
-                                   h5("Flow Duration"),
-                                   p("The duration of the flow can help in identifying long-running connections, which could be indicative of certain types of attacks or suspicious activity."),
-                                   h5("Total Fwd Packets | Total Backward Packets"),
-                                   p("These features represent the total number of packets in the forward and backward directions, respectively. They can be useful in identifying different types of network attacks such as DDoS or port scanning."),
-                                   h5("Total Length of Fwd Packets | Total Length of Bwd Packets"),
-                                   p("These features represent the total length of packets in the forward and backward directions, respectively. They can be used to identify large data transfers or exfiltration attempts."),
-                                   h5("Fwd Packet Length Max | Fwd Packet Length Min"),
-                                   p("These features represent the maximum and minimum length of forward packets in the flow. The distribution of packet lengths can be used to identify specific types of attacks, such as buffer overflow or data injection."),
-                                   h5("Fwd Packet Length Mean | Fwd Packet Length Std"),
-                                   p("These features represent the mean and standard deviation of forward packet lengths in the flow. These statistics can be used to identify outliers and anomalies in the packet length distribution."),
-                                   h5("Flow Bytes/s | Flow Packets/s"),
-                                   p("These features represent the average number of bytes and packets per second in the flow. They can be used to identify abnormal network activity and potential security threats."),
-                                   h5("Flow IAT Mean | Flow IAT Std | Flow IAT Max | Flow IAT Min"),
-                                   p("These features represent the mean, standard deviation, maximum, and minimum inter-arrival time between packets in the flow. They can identify different types of network attacks, such as port scanning and DoS attacks."),
-                                   h5("Fwd IAT Total | Fwd IAT Mean | Fwd IAT Std | Fwd IAT Max | Fwd IAT Min"),
-                                   p("These features represent the total, mean, standard deviation, maximum, and minimum inter-arrival time between forward packets in the flow. These statistics can be used to identify unusual patterns in network traffic."),
-                                   h5("Bwd IAT Total | Bwd IAT Mean | Bwd IAT Std | Bwd IAT Max | Bwd IAT Min"),
-                                   p("These features represent the total, mean, standard deviation, maximum, and minimum inter-arrival time between backward packets in the flow. These statistics can be used to identify unusual patterns in network traffic."),
-                                   h5("Fwd PSH Flags | Bwd PSH Flags | Fwd URG Flags | Bwd URG Flag"),
-                                   p("These features represent the presence of specific TCP flags in the forward and backward directions. These flags can be used to identify different types of network attacks, such as data injection and DoS attacks."),
-                                   h5("Fwd Header Length | Bwd Header Length"),
-                                   p("These features represent the total length of the headers in the forward and backward directions. They can be used to identify different types of network attacks, such as packet fragmentation and injection attacks."),
-                                   h5("Min Packet Length | Max Packet Length | Packet Length Mean | Packet Length Std"),
-                                   p("These features represent the minimum, maximum, mean, and standard deviation of packet lengths in the flow. They can be used to identify anomalies in the packet length distribution and potential security threats."),
-                                   h5("FIN Flag Count | SYN Flag Count | RST Flag Count | PSH Flag Count | ACK Flag Count | URG Flag Count | CWE Flag Count | ECE Flag Count"),
-                                   p("These features represent the count of specific TCP flags")
-                                   
-                                   )
-                             ),
                              fluidRow(
                                box(width = 12,
                                    h3("Distribution of BENIGN IP Addresses"),
@@ -376,6 +351,41 @@ dashboardPage( skin = "blue",
                                    p("When working with a categorical variable, a random classifier can be used as a baseline model to assess the performance of other classifiers. Since a categorical variable has a limited number of discrete values or 
                                    categories, a random classifier can assign labels to instances with the same probability for each category. This means that the expected accuracy of a random classifier for a balanced dataset with k classes is 1/k. Therefore, 
                                      a random classifier is a useful tool to establish a baseline performance metric for classification tasks, particularly when working with categorical variables."))
+                             ),
+                             fluidRow(
+                               box(width = 12,
+                                   h3("Features"),
+                                   br(),
+                                   h5("Destination Port"),
+                                   p("The destination port number of the network traffic is important for identifying the type of application or service that is being used, which can help in identifying potential security threats."),
+                                   h5("Flow Duration"),
+                                   p("The duration of the flow can help in identifying long-running connections, which could be indicative of certain types of attacks or suspicious activity."),
+                                   h5("Total Fwd Packets | Total Backward Packets"),
+                                   p("These features represent the total number of packets in the forward and backward directions, respectively. They can be useful in identifying different types of network attacks such as DDoS or port scanning."),
+                                   h5("Total Length of Fwd Packets | Total Length of Bwd Packets"),
+                                   p("These features represent the total length of packets in the forward and backward directions, respectively. They can be used to identify large data transfers or exfiltration attempts."),
+                                   h5("Fwd Packet Length Max | Fwd Packet Length Min"),
+                                   p("These features represent the maximum and minimum length of forward packets in the flow. The distribution of packet lengths can be used to identify specific types of attacks, such as buffer overflow or data injection."),
+                                   h5("Fwd Packet Length Mean | Fwd Packet Length Std"),
+                                   p("These features represent the mean and standard deviation of forward packet lengths in the flow. These statistics can be used to identify outliers and anomalies in the packet length distribution."),
+                                   h5("Flow Bytes/s | Flow Packets/s"),
+                                   p("These features represent the average number of bytes and packets per second in the flow. They can be used to identify abnormal network activity and potential security threats."),
+                                   h5("Flow IAT Mean | Flow IAT Std | Flow IAT Max | Flow IAT Min"),
+                                   p("These features represent the mean, standard deviation, maximum, and minimum inter-arrival time between packets in the flow. They can identify different types of network attacks, such as port scanning and DoS attacks."),
+                                   h5("Fwd IAT Total | Fwd IAT Mean | Fwd IAT Std | Fwd IAT Max | Fwd IAT Min"),
+                                   p("These features represent the total, mean, standard deviation, maximum, and minimum inter-arrival time between forward packets in the flow. These statistics can be used to identify unusual patterns in network traffic."),
+                                   h5("Bwd IAT Total | Bwd IAT Mean | Bwd IAT Std | Bwd IAT Max | Bwd IAT Min"),
+                                   p("These features represent the total, mean, standard deviation, maximum, and minimum inter-arrival time between backward packets in the flow. These statistics can be used to identify unusual patterns in network traffic."),
+                                   h5("Fwd PSH Flags | Bwd PSH Flags | Fwd URG Flags | Bwd URG Flag"),
+                                   p("These features represent the presence of specific TCP flags in the forward and backward directions. These flags can be used to identify different types of network attacks, such as data injection and DoS attacks."),
+                                   h5("Fwd Header Length | Bwd Header Length"),
+                                   p("These features represent the total length of the headers in the forward and backward directions. They can be used to identify different types of network attacks, such as packet fragmentation and injection attacks."),
+                                   h5("Min Packet Length | Max Packet Length | Packet Length Mean | Packet Length Std"),
+                                   p("These features represent the minimum, maximum, mean, and standard deviation of packet lengths in the flow. They can be used to identify anomalies in the packet length distribution and potential security threats."),
+                                   h5("FIN Flag Count | SYN Flag Count | RST Flag Count | PSH Flag Count | ACK Flag Count | URG Flag Count | CWE Flag Count | ECE Flag Count"),
+                                   p("These features represent the count of specific TCP flags")
+                                   
+                               )
                              )
                            )),
                    tabItem("comparison",
@@ -383,14 +393,14 @@ dashboardPage( skin = "blue",
                              fluidRow(
                                box(
                                  width = 12,
-                                 h2("Model Selection")
+                                 h2("Model Comparison")
                                )),
                              fluidRow(
                                box(width = 4,
                                    h3("Select Model"),
                                    uiOutput("selectModel1")),
                                box(width = 8,
-                                   h3("Model Chart Score"),
+                                   h3("Is the Model Overfitting?"),
                                    imageOutput("modelChartImg"))
                              )
                            )),

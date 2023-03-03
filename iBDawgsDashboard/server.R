@@ -59,9 +59,49 @@ shinyServer(function(input, output) {
       )
   })
   
+  ddos_type_plot <- reactive({data <- data.frame(category = c("DDoS", "DoS Hulk", "DoS Slowhttptest", "DoS GoldenEye", "DoS slowloris"), 
+                                               value = c(59.80, 35.18, 2.57, 1.57, 0.89))
+  
+  # Sort the data frame by the value column in descending order
+  #data <- data[order(data$value, decreasing = TRUE), ]
+  
+  # Define color palette
+  colors <- c("#00BFFF", "#1E90FF", "#4169E1", "#000080", "#00008B")
+  
+  # Create the bar chart with different colors, descending order, x-axis limit, legend title, and bar labels
+  ggplot(data, aes(x = value, y = category, fill = category)) +
+    geom_bar(stat = "identity") +
+    geom_text(aes(label = value), hjust = 0.5) +
+    scale_fill_manual(values = colors) +
+    labs(title = "Distribution of Attack Types", x = "Percentage of Attacks", y = "Attack Type", fill = "Attack Type") +
+    theme_minimal() +
+    xlim(0, 100) +
+    coord_flip()
+    })
+  
+  ddos_type_pie <- reactive({data <- data.frame(category = c("DDoS", "DoS Hulk", "DoS Slowhttptest", "DoS GoldenEye", "DoS slowloris"), 
+                                                value = c(59.80, 35.18, 2.57, 1.57, 0.89))
+  
+  # Sort the data frame by the value column in descending order
+  data <- data[order(data$value, decreasing = TRUE), ]
+  
+  # Define color palette
+  colors <- c("#00BFFF", "#1E90FF", "#4169E1", "#000080", "#00008B")
+  
+  # Create the pie chart with different colors and legend title
+  ggplot(data, aes(x = "", y = value, fill = category)) +
+    geom_col(width = 1) +
+    scale_fill_manual(values = colors, 
+                      name = "Attack Type", 
+                      labels = paste0(data$category, " (", data$value, "%)")) +
+    labs(title = "Distribution of Attack Types") +
+    coord_polar(theta = "y") +
+    theme_void()
+  })
+  
   model_score <- reactive({
     if (input$model_selection == "Decision Tree") {
-      return(paste("                         Accuracy: 1.000",
+      return(paste("                         Accuracy: 1.000", 
                     "\tPrecision: 1.000",
                     "\tRecall: 1.000",
                     "\tF1 score: 1.000",
@@ -134,6 +174,14 @@ shinyServer(function(input, output) {
   
   output$benignMap <- renderLeaflet(
     geo_data_map()
+  )
+  
+  output$ddosChart <- renderPlotly(
+    ddos_type_plot()
+  )
+  
+  output$ddosPie <- renderPlotly(
+    ddos_type_pie()
   )
   
 })
