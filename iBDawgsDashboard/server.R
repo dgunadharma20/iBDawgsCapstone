@@ -101,42 +101,46 @@ shinyServer(function(input, output) {
   
   model_score <- reactive({
     if (input$model_selection == "Decision Tree") {
-      return(paste("                         Accuracy: 1.000", 
-                    "\tPrecision: 1.000",
-                    "\tRecall: 1.000",
-                    "\tF1 score: 1.000",
-                    "\tRunning time: 1.207 seconds",
+      return(paste("        Accuracy: 1.000", 
+                   "\tPrecision: 1.000",
+                   "\tRecall: 1.000",
+                   "\tF1 score: 1.000",
+                   "\tRunning time: 1.207 seconds",
                    sep="\n"))
     } else if (input$model_selection == "K-Nearest Neighbors") {
-      return(paste("                         Accuracy: 0.989",
-                    "\tPrecision: 0.989",
-                    "\tRecall: 0.992",
-                    "\tF1 score: 0.991",
-                    "\tRunning time: 401.435 seconds",
-                    sep="\n"))
+      return(paste("        Accuracy: 0.989",
+                   "\tPrecision: 0.989",
+                   "\tRecall: 0.992",
+                   "\tF1 score: 0.991",
+                   "\tRunning time: 401.435 seconds",
+                   sep="\n"))
       
     } else if (input$model_selection == "Gaussian Naive Bayes") {
-      return(paste("                         Accuracy: 0.796",
-                    "\tPrecision: 0.736",
-                    "\tRecall: 1.000",
-                    "\tF1 score: 0.848",
-                    "\tRunning time: 0.229 seconds",
-                    sep="\n"))
+      return(paste("        Accuracy: 0.796",
+                   "\tPrecision: 0.736",
+                   "\tRecall: 1.000",
+                   "\tF1 score: 0.848",
+                   "\tRunning time: 0.229 seconds",
+                   sep="\n"))
       
     } else if (input$model_selection == "Random Forest") {
-      return(paste("                         Accuracy: 1.000",
-                    "\tPrecision: 1.000",
-                    "\tRecall: 1.000",
-                    "\tF1 score: 1.000",
-                    "\tRunning time: 30.397 seconds",
-                    sep="\n"))
+      return(paste("        Accuracy: 1.000",
+                   "\tPrecision: 1.000",
+                   "\tRecall: 1.000",
+                   "\tF1 score: 1.000",
+                   "\tRunning time: 30.397 seconds",
+                   sep="\n"))
       
     }
   })
   
   output$modelScoreText <- renderText({
-    model_score()
+    HTML(model_score())
   })
+  
+  
+  
+  
   
   output$modelChartImg <- renderImage({
     if (input$model_selection == "Decision Tree") {

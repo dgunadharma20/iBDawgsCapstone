@@ -10,6 +10,7 @@
 library(shiny)
 library(shinydashboard)
 library(plotly)
+require(leaflet)
 
 # Define UI for application that draws a histogram
 dashboardPage( skin = "blue",
@@ -417,7 +418,8 @@ dashboardPage( skin = "blue",
                                    uiOutput("selectModel2")),
                                box(width = 8,
                                    h3("Model Scores"),
-                                   textOutput("modelScoreText"))
+                                   textOutput("modelScoreText"),
+                                   tags$style(type="text/css", "#modelScoreText {white-space: pre-wrap;}"))
                              )
                            )),
                    tabItem("results",
