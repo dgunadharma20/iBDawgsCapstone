@@ -64,18 +64,6 @@ dashboardPage( skin = "blue",
                    menuItem("ML Model",
                             tabName = "model",
                             icon = icon("")
-                   ),
-                   menuItem("Comparison",
-                            tabName = "comparison",
-                            icon = icon("")
-                   ),
-                   menuItem("Analysis Resulsts",
-                            tabName = "results",
-                            icon = icon("")
-                   ),
-                   menuItem("Business Values",
-                            tabName = "business",
-                            icon = icon("")
                    )
                 )
                ),
@@ -389,22 +377,6 @@ dashboardPage( skin = "blue",
                                )
                              )
                            )),
-                   tabItem("comparison",
-                           fluidPage(
-                             fluidRow(
-                               box(
-                                 width = 12,
-                                 h2("Model Comparison")
-                               )),
-                             fluidRow(
-                               box(width = 4,
-                                   h3("Select Model"),
-                                   uiOutput("selectModel1")),
-                               box(width = 8,
-                                   h3("Is the Model Overfitting?"),
-                                   imageOutput("modelChartImg"))
-                             )
-                           )),
                    tabItem("model",
                            fluidPage(
                              fluidRow(
@@ -417,27 +389,11 @@ dashboardPage( skin = "blue",
                                    h3("Select Model"),
                                    uiOutput("selectModel2")),
                                box(width = 8,
+                                   h3("Is the Model Overfitting?"),
+                                   imageOutput("modelChartImg"),
                                    h3("Model Scores"),
                                    textOutput("modelScoreText"),
                                    tags$style(type="text/css", "#modelScoreText {white-space: pre-wrap;}"))
-                             )
-                           )),
-                   tabItem("results",
-                           fluidPage(
-                             fluidRow(
-                               box(width = 12)
-                             ),
-                             fluidRow(
-                               box(width = 12)
-                             )
-                           )),
-                   tabItem("business",
-                           fluidPage(
-                             fluidRow(
-                               box(width = 12)
-                             ),
-                             fluidRow(
-                               box(width = 12)
                              )
                            ))
                  )
