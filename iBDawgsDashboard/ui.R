@@ -297,11 +297,6 @@ dashboardPage( skin = "blue",
                                box(width = 12,
                                    plotlyOutput("ddosChart")
                                )
-                             ),
-                             fluidRow(
-                               box(width = 12,
-                                   plotlyOutput("ddosPie")
-                               )
                              )
                            )),
                    tabItem("data",
