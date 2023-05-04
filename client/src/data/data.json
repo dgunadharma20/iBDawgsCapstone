@@ -6,16 +6,16 @@
   "About": {
     "paragraph": "How might security analysts specializing in security aspects of applications utilize AI & ML models on network traffic data so that they can improve the security and privacy of web-based service enterprises? Here at iBDawgs, we explore and develop AI and ML models to detect and analyze different account behaviors by looking at patterns of logins across features/entities shared by attackers.",
     "Why": [
-      "Lorem ipsum dolor",
-      "Tempor incididunt",
-      "Lorem ipsum dolor",
-      "Incididunt ut labore"
+      "Cyber threats pose severe consequences",
+      "Current methods may not prevent unauthorized access",
+      "Vulnerability lead to losses and damages",
+      "Traditional methods may not suffice against evolving threats"
     ],
     "Why2": [
-      "Aliquip ex ea commodo",
-      "Lorem ipsum dolor",
-      "Exercitation ullamco",
-      "Lorem ipsum dolor"
+      "Audience: security analysts specialized in app security",
+      "Secure web services with open-source data",
+      "Enhance security management sustainability",
+      "Reduce risks, enhance digital ecosystem security"
     ]
   },
   "Gallery": [
