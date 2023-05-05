@@ -236,7 +236,6 @@ dashboardPage( skin = "blue",
                              )
                            )),
                    tabItem("context",
-                           
                            fluidPage(
                              fluidRow(
                                box(
@@ -261,6 +260,7 @@ dashboardPage( skin = "blue",
                                      measures and contingency preparation."))
                              )
                            )),
+                   
                    tabItem("types",
                            fluidPage(
                              fluidRow(
@@ -299,6 +299,7 @@ dashboardPage( skin = "blue",
                                )
                              )
                            )),
+                   
                    tabItem("data",
                            fluidPage(
                              fluidRow(
@@ -337,6 +338,7 @@ dashboardPage( skin = "blue",
                                      regions. In the cybersecurity domain, such analysis can help in identifying potential threats and vulnerabilities in different geographic locations and inform risk management strategies.")
                                ))
                            )),
+                   
                    tabItem("feature",
                            fluidPage(
                              fluidRow(

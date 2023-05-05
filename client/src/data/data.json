@@ -20,51 +20,41 @@
   },
   "Features": [
     {
-      "icon": "fa fa-cart-arrow-down",
+      "icon": "fa fa-exclamation-triangle",
       "name": "DDoS Attack Types",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "A description of different types of DDoS attacks and an identification of the most commonly used type."
     },
     {
-      "icon": "fa fa-cart-arrow-down",
+      "icon": "fa fa-signal",
       "name": "Network Traffic",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "An explanation of network traffic data and how it is distributed on a map across the world."
     },
     {
-      "icon": "fa fa-cloud-download",
+      "icon": "fa fa-search",
       "name": "Feature Selection",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "A description of the dataset or network traffic data features used to achieve consistent high accuracy scores when testing different types of DDoS attacks on an ML model."
     },
     {
-      "icon": "fa fa-python",
+      "icon": "fa fa-cube",
       "name": "ML Model",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-    },
-    {
-      "icon": "fa fa-plane",
-      "name": "Context",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
-    },
-    {
-      "icon": "fa fa-pie-chart",
-      "name": "Consectetur adipiscing",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sedasd commodo nibh ante facilisis bibendum dolor feugiat at."
+      "text": "Testing various ML models and comparing their performance scores to identify the most effective model."
     }
   ],
   "Testimonials": [
     {
       "img": "img/testimonials/03.jpg",
       "text": "\"Using the interactive data visualization dashboard was a delightful experience for me as it enabled me to delve into the network security data and uncover valuable insights regarding how various features can aid in detecting potential threats.\"",
-      "name": "Computer Science Undergraduate Student (20)"
+      "name": "Computer Science Undergraduate Student"
     },
     {
       "img": "img/testimonials/06.jpg",
       "text": "\"For individuals seeking to expand their knowledge of cybersecurity trends and data, the website serves as an exceptional resource.\"",
-      "name": "Cybersecurity Intern (22)"
+      "name": "Cybersecurity Intern"
     },
     {
       "img": "img/testimonials/02.jpg",
       "text": "\"iBDawgs Dashboard website is an excellent tool that facilitates the exploration of cybersecurity trends and provides valuable industry insights.\"",
-      "name": "Software Engineer (28)"
+      "name": "Software Engineer"
     }
   ],
   "Team": [

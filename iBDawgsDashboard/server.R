@@ -126,10 +126,6 @@ shinyServer(function(input, output) {
     HTML(model_score())
   })
   
-  
-  
-  
-  
   output$modelChartImg <- renderImage({
     if (input$model_selection == "Decision Tree") {
       return(list(src = "decision_tree.png"))
@@ -142,7 +138,6 @@ shinyServer(function(input, output) {
       
     } else if (input$model_selection == "Random Forest") {
       return(list(src = "random_forest.png"))
-      
     }
   })
   
