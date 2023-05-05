@@ -1,7 +1,6 @@
 {
   "Header": {
-    "title": "Network Traffic Dashboard",
-    "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+    "title": "iBDawgs Network Traffic Dashboard"  
   },
   "About": {
     "paragraph": "How might security analysts specializing in security aspects of applications utilize AI & ML models on network traffic data so that they can improve the security and privacy of web-based service enterprises? Here at iBDawgs, we explore and develop AI and ML models to detect and analyze different account behaviors by looking at patterns of logins across features/entities shared by attackers.",
@@ -94,24 +93,24 @@
   },
   "Insights": [
     {
-      "icon": "fa fa-comments-o",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-filter",
+      "title": "Feature Selection",
+      "text": "Network Traffic Data comprises various features that are utilized to recognize it."
     },
     {
-      "icon": "fa fa-bullhorn",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-user-secret",
+      "title": "Benign vs Malicious",
+      "text": "A benign IP address contains identifiable information that accurately represents itself, whereas a malicious IP address does not."
     },
     {
-      "icon": "fa fa-group",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-cube",
+      "title": "ML Models",
+      "text": "The effectiveness of various machine learning models depends on the selection of different features."
     },
     {
-      "icon": "fa fa-magic",
-      "title": "Lorem ipsum",
-      "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+      "icon": "fa fa-globe",
+      "title": "Network Traffic",
+      "text": "Network traffic data is generated globally and continuously."
     }
   ]
 }
